@@ -72,6 +72,27 @@ class Rules:
     Class with a method which applies a rule on a grid of cells
     Really, shouldn't be a class
     """
+    @staticmethod
+    def count_neighbors(grid: Dict[None, Tuple[int, int]], max_size: int,
+            get_neighbors) -> Dict[Tuple[int, int], int]:
+        """Counting the neighbors for each cell in a state.
+        Serves as a mask for grid cells which die or become alive
+        """
+        counter = {}
+
+        for element in grid:
+            if element not in counter:
+                counter[element] = 0
+            neighbors = get_neighbors(element, max_size)
+            for neighbor in neighbors:
+                if neighbor not in counter:
+                    counter[neighbor] = 1
+                else:
+                    counter[neighbor] += 1
+
+        return counter
+
+
     def apply_rules(self, grid: Dict[None, Tuple[int, int]],
             max_size: int, get_neighbors) -> Dict[None, Tuple[int, int]]:
         """Apply rules on the current grid configuration
@@ -86,23 +107,35 @@ class Rules:
         get_neighbors: method from State.get_neighbors()
         """
 
-        counter = {}
+        counter = Rules.count_neighbors(grid, max_size, get_neighbors)
 
-        for element in grid:
-            if element not in counter:
-                counter[element] = 0
-            neighbors = get_neighbors(element, max_size)
-            for neighbor in neighbors:
-                if neighbor not in counter:
-                    counter[neighbor] = 1
-                else:
-                    counter[neighbor] += 1
-
-        # counter serves as a mask for grid cells which die or become alive
         for candidate in counter:
             if counter[candidate] < 2 or counter[candidate] > 3:
                 grid.discard(candidate)
             if counter[candidate] == 3:
+                grid.add(candidate)
+
+        return grid
+
+
+class HighlifeRules(Rules):
+    """A variation proposed by Conway, which has replicator dynamic properties
+    Only investigated in 1994, a few decades later
+    """
+    def apply_rules(self, grid: Dict[None, Tuple[int, int]],
+            max_size: int, get_neighbors) -> Dict[None, Tuple[int, int]]:
+        """
+        A cell survives if has 2 or 3 neighbors,
+        A cell is born if has 3 or 6 neighbors
+        """
+        counter = HighlifeRules.count_neighbors(grid, max_size, get_neighbors)
+
+        for candidate in counter:
+            # of course the if statements are neater in [3, 6]
+            # but this is dumb and readable
+            if counter[candidate] < 2 or (counter[candidate] > 3 and counter[candidate] < 6):
+                grid.discard(candidate)
+            if counter[candidate] == 3 or counter[candidate] == 6:
                 grid.add(candidate)
 
         return grid

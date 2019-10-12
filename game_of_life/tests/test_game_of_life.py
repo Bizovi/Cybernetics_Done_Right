@@ -221,3 +221,68 @@ def test_shape_of_transforming_results_to_array():
     assert res.shape == (6, max_size + 1, max_size + 1)
 
     # Cleanup - none needed
+
+
+def test_counting_logic_of_alive_neighbors():
+    """Test if the counting of neighbors is correct"""
+    # Setup
+    rules = game.Rules()
+    max_size = 5
+    grid = {(3, 3), (3, 4), (3, 5)}
+    state = game.State(grid)
+
+    # Exercise
+    result_counter = game.Rules.count_neighbors(grid, max_size, state.get_neighbors)
+
+    # Verify
+    true_counter = {
+        (2, 2): 1, (3, 2): 1, (4, 2): 1,
+        (4, 3): 2, (4, 4): 3, (4, 5): 2,
+        (2, 3): 2, (2, 4): 3, (2, 5): 2,
+        (3, 3): 1, (3, 4): 2, (3, 5): 1
+    }
+    assert result_counter == true_counter
+
+    # Cleanup - none necessary
+
+
+## Implementing HighLife replicator dynamic
+def test_high_life_rules_inheritance_counting():
+    # Setup
+    rules = game.HighlifeRules()
+    max_size = 5
+    grid = {(3, 3), (3, 4), (3, 5)}
+    state = game.State(grid)
+
+    # Exercise
+    result_counter = game.HighlifeRules.count_neighbors(grid, max_size, state.get_neighbors)
+
+    # Verify
+    true_counter = {
+        (2, 2): 1, (3, 2): 1, (4, 2): 1,
+        (4, 3): 2, (4, 4): 3, (4, 5): 2,
+        (2, 3): 2, (2, 4): 3, (2, 5): 2,
+        (3, 3): 1, (3, 4): 2, (3, 5): 1
+    }
+    assert result_counter == true_counter
+
+    # Cleanup - none necessary
+
+
+def test_high_life_rule_application_on_a_block():
+    """Test one iteration of high life rule on a square"""
+    # Setup
+    grid = {(4, 5), (5, 5), (4, 6), (5, 6)}
+    max_size = 10
+
+    rules = game.HighlifeRules()
+    state = game.State(grid)
+
+    # Exercise
+    grid_result = rules.apply_rules(grid, max_size, state.get_neighbors)
+    grid_expected = {(4, 5), (5, 5), (4, 6), (5, 6)}
+
+    # Verify
+    assert grid_result == grid_expected
+
+    # Cleanup - none needed

@@ -12,7 +12,18 @@ By taking the API and design described in the paper, which is sound if I am to e
 **Figure 1:** The blaster pattern. *(Source: Joseph Moukarzel, Reproduced from code)*
 
 
-### Getting started
+I extended the library for the variation on Game of Life proposed by Conway, called [HighLife](https://www.conwaylife.com/wiki/OCA:HighLife), which was first considered by Nathan Thompson in 1994. In this configuration:
+
+* A cell survives if has 2 or 3 neighbors
+* A cell is born if it has 3 or 6 neighbors
+* Dies otherwise
+
+<img src="highlife_replicator.gif" width="300" height="300" align="middle">
+
+**Figure 1:** HighLife is well known for its replication dynamics. *(Source: Own implementation)*
+
+
+### Setup and Installation
 
 Installation in editable mode:
 
@@ -54,6 +65,12 @@ pytest --cov  # test coverage report
 # ------------------------------------------------
 # TOTAL                          155     13    92%
 ```
+
+### Getting started: Change the code with confidence
+
+ Let's say I want to refactor the code, and pull the `counter` calculation under `Rules` class in a function, i.e. a `@staticmethod`. Running the tests indicates that I forgot to use the `Class.my_static_method()` syntax, and after fixing the issue test suite passes, giving more confidence that previous use-cases still hold.
+
+> The beautiful thing is, we can test the correctness of the counter functionality separately from the logic in which we implement rules. Let's do that after playing with the library for a bit.
 
 ```python
 import game

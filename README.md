@@ -5,30 +5,24 @@
 * Theoretically rigorous and sound, leverages mathematical, statistical and domain understanding. Some elements of abstract math to understand the underlying foundations.
 * Applications are based on actual code and implementations, on real data. Introduces real world challenges related to deploying models and improving decision making in organizations.
 * Simulations are used extensively to get a feel of the behavior of models and algorithms.
-* No bullshit subjects just to fill in the credits
 
 
-# Computer Science
+## Computer Science
 
-A focus shifted from software development to scientific computing, emphasizing the challenges in deploying models, BI, data modeling, big data, streaming, containers and automation. Usage of high-level languages as Python and R, containters, APIs above low-level concerns of pointers, memory allocation and parallel computing.
-
-
+A focus shifted from software development to **scientific computing**, emphasizing the challenges in deploying models, BI, data modeling, big data, streaming, containers and automation. Usage of high-level languages such as Python and R, containters, APIs instead of low-level concerns of pointers, memory allocation and parallel computing.
 
 
-
-# Mathematics
-
+## Mathematics
 A rigorous preparation and mathematical background.
 
 
-# Statistics and Econometrics
-
+## Statistics and Econometrics
 A path towards Computer Age Statistical Inference.
 
 
 
 
-# Machine Learning and Deep Learning
+## Machine Learning and Deep Learning
 
 A path to the cutting-edge methods and models for machine learning.
 
@@ -51,4 +45,7 @@ A path to the cutting-edge methods and models for machine learning.
 
 1. [Coursera, IBM](https://www.coursera.org/learn/machine-learning-with-python/home/welcome) Machine Learning with Python
 
-# Economics and Business
+
+## Economics and Business
+
+A pluralist perspective over economic questions and an overview of  **modern** management challenges and methodologies.

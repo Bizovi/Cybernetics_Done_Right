@@ -163,7 +163,7 @@ def test_state_copying():
 
     # Cleanup - none needed
 
-    
+
 def test_running_glider_five_iterations():
     """Test if glider returns to initial position after 4 iterations"""
     # Setup
@@ -181,5 +181,22 @@ def test_running_glider_five_iterations():
     desired_state = {(3, 2), (3, 3), (3, 4)}
     assert len(res) == max_iter + 1 # four iterations plus the initial
     assert res[-1] == desired_state
+
+    # Cleanup - none needed
+
+
+def test_equality_of_states():
+    """Test that the equality checking method identifies two identical
+    states for two objects"""
+    # Setup
+    first_grid  = {(5, 5), (5, 6), (5, 7)}
+    second_grid = {(5, 5), (5, 6), (5, 7)}
+
+    # Exercise
+    first_state  = game.State(first_grid)
+    second_state = game.State(second_grid)
+
+    # Verify
+    assert first_state.equals(second_state)
 
     # Cleanup - none needed

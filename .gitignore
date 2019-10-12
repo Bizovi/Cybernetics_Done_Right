@@ -6,3 +6,6 @@
 **/*.pytest_cache/
 **/*.coverage
 **/*.ipynb_checkpoints/
+
+**/venv_*/
+**/venv_game

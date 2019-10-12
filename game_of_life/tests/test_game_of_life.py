@@ -112,3 +112,74 @@ def test_rule_application_on_glider():
     assert grid_result == grid_expected
 
     # Cleanup - none needed
+
+
+def test_rule_application_on_glider_reverse():
+    """Test if we apply a method on gliders, it will return the correct state"""
+    # Setup
+    grid = {(5, 4), (5, 5), (5, 6)}
+    max_size = 10
+
+    rules = game.Rules()
+    state = game.State(grid)
+
+    # Exercise
+    grid_result = rules.apply_rules(grid, max_size, state.get_neighbors)
+    grid_expected = {(4, 5), (5, 5), (6, 5)}
+
+    # Verify
+    assert grid_result == grid_expected
+
+    # Cleanup - none needed
+
+
+def test_game_initialization():
+    # Setup
+    max_size = 5
+    initial_grid = {(2, 3), (3, 3), (4, 3)}
+    initial_state = game.State(initial_grid)
+    rules = game.Rules()
+
+    # Exercise
+    game_glider = game.Game(initial_state, rules.apply_rules, max_size)
+
+    # Verify
+    assert game_glider.initial_state == initial_state
+    assert game_glider.max_size == max_size
+
+    # Cleanup - none needed
+
+
+def test_state_copying():
+    # Setup
+    initial_grid = {(2, 3), (3, 3), (4, 3)}
+
+    # Exercise
+    initial_state = game.State(initial_grid)
+
+    # Verify
+    copied_state = initial_state.copy()
+    assert initial_state.state == copied_state.state
+
+    # Cleanup - none needed
+
+    
+def test_running_glider_five_iterations():
+    """Test if glider returns to initial position after 4 iterations"""
+    # Setup
+    max_size = 5
+    max_iter = 5
+    initial_grid = {(2, 3), (3, 3), (4, 3)}
+    initial_state = game.State(initial_grid)
+    rules = game.Rules()
+
+    # Exercise
+    game_glider = game.Game(initial_state, rules, max_size)
+    res = game_glider.run_game(max_iter)
+
+    # Verify
+    desired_state = {(3, 2), (3, 3), (3, 4)}
+    assert len(res) == max_iter + 1 # four iterations plus the initial
+    assert res[-1] == desired_state
+
+    # Cleanup - none needed

@@ -200,3 +200,24 @@ def test_equality_of_states():
     assert first_state.equals(second_state)
 
     # Cleanup - none needed
+
+
+def test_shape_of_transforming_results_to_array():
+    """Test that the list of dictionaries can be transformed
+    to a 3d numpy array"""
+    # Setup
+    max_size = 5
+    max_iter = 5
+    initial_grid = {(2, 3), (3, 3), (4, 3)}
+    initial_state = game.State(initial_grid)
+    rules = game.Rules()
+    game_glider = game.Game(initial_state, rules, max_size)
+    game_states = game_glider.run_game(max_iter)
+
+    # Exercise
+    res = game.results_to_array(game_states, max_size)
+
+    # Verify
+    assert res.shape == (6, max_size + 1, max_size + 1)
+
+    # Cleanup - none needed

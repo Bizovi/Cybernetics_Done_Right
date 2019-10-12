@@ -133,14 +133,14 @@ class Game:
         return progression
 
 
-def save_gif(array: np.array, file_name: str) -> None:
+def save_gif(array: np.array, file_name: str, figsize: Tuple = (300, 300)) -> None:
     """Transform array to a gif and save to a file"""
     from PIL import Image
     array = np.uint8(np.clip(array,0,1)*255.0)
     frames = []
     for frame in range(array.shape[0]):
         img = Image.fromarray(array[frame])
-        img = img.resize((500, 500))
+        img = img.resize(figsize)
         frames.append(img)
     img.save(file_name, save_all=True, duration=33.33, append_images=frames, loop=0,size=(500,500))
 

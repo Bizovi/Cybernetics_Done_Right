@@ -23,6 +23,23 @@ I extended the library for the variation on Game of Life proposed by Conway, cal
 **Figure 1:** HighLife is well known for its replication dynamics. *(Source: Own implementation)*
 
 
+### A teaching perspective
+By the time this topic is to be discussed, the student already has some experience with Python, algorithm design and analysis, data structures, but not yet Object Oriented programming. It is a great way to kill a few birds with a single shot:
+
+* Use game of life (cellular automata) to explain how it fits into the history of Cybernetics, how simple rules can give rise to complex behaviors, maps, and iteration.
+* Realize that in practice we use other tools such as System Dynamics, Network analysis, Systems' Theory, Cybernetics, Game theory. Draw some connections with Turing machines and their different instantiations, topics of concerns to theoretical computer scientists. **Introduce the idea of classifying patterns** qualitatively (useful when getting to nonlinear dynamics).
+* Introduce the fundamentals of Object Oriented programming and how we would go about implementing a game of life in python.
+* Usage of TDD and an introduction to testing in Python. Students can have as an assignment the extension of the library to manage new rules, build an UI or explore the theoretical aspects.
+
+
+Thus, it covers the **theoretical** and motivational part, **simulations** and **implementation**, but lacks connections with the real world. At this point, the idea of **agent-based modeling** can be introduced as well as a reasoning of why some system are complex and behave non-linearly (physics, meteorology, biology).
+
+> "One interesting and surprising application of the Game of Life is
+that we can construct an initial pattern that will generate the
+prime numbers sequentially. The primer below is due to Dick
+Hickerson, 1991" - [Melissa Gymrek, the mathematics of toys and games](http://web.mit.edu/sp.268/www/2010/lifeSlides.pdf)
+
+
 ### Setup and Installation
 
 Installation in editable mode:

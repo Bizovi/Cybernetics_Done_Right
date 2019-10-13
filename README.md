@@ -38,6 +38,7 @@ At this moment I can look at it with a fresh perspective, skills acquired in the
 
 I am confident that an excellent way of deeply understanding the fundamentals is to explain them. From there, I can deal with any new problem with a much greater deal of confidence and effectiveness.
 
+> By analogy, the goal is to make something similar to Fast.AI for Romania and to bring back the "lost" art of Cybernetics, with a hyper-modern twist to it.
 
 <!--
 ## Computer Science
